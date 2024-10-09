@@ -1,32 +1,41 @@
 #ifndef _NODO_KD_H
 #define _NODO_KD_H
 
-#include "Vertice.h"
 
 template<class T>
 class NodoKD {
 private:
-    Vertice vertice;
+    T dato;
     NodoKD<T>* hijoIzq;  
     NodoKD<T>* hijoDer;  
     int dimension; // 0:x 1:y 2:z
 
 public: 
     NodoKD();
-    Vertice& getVertice();
-    void setVertice(const Vertice& val);
+    T& getDato();
+    void setDato(const T& val);
     NodoKD<T>* getHijoIzq();
     NodoKD<T>* getHijoDer();
     void setHijoIzq(NodoKD<T>* izq);
     void setHijoDer(NodoKD<T>* der);
     int getDimension();
-    void setDimension(char d);
+    void setDimension(int d);
     int altura();
-    int tamano();
+    int tam() const;
+
+    void insertar(const T& val, int profundidad);
+    NodoKD<T>* buscar(const T& val, int profundidad);
+    bool eliminar(T& val, int profundidad);
+
+    void preOrden();
+    void inOrden();
+    void posOrden();
+    void nivelOrden();
+    
 
 
 
 };
-#include "ArbolK-D.hxx"
+#include "NodoK-D.hxx"
 
 #endif
